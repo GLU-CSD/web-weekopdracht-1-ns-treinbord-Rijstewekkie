@@ -23,10 +23,11 @@
 
     display: grid;
     grid-template-areas:
-                        "tijd treinsoort logo"
+                        "minuten treinsoort logo"
                         "bestemming bestemming bestemming"
                         "via via via"
-                        "treinlengte treinlengte treinlengte"
+                        "via2 via2 via2"
+                        "length length length"
                         "volgende volgende volgende";
 
 }
@@ -38,26 +39,38 @@
     border: 2px solid #000;
 }
 
-#tijd{
+#minuten{
     background-color: white;
-    grid-area: tijd;
-    width: 350px;
+    grid-area: minuten;
+    width: 310px;
+    font-size: 30px;
+}
+
+#minuuttekst{
+    font-size: 20px;
 }
 
 #treinsoort{
     background-color: white;
     grid-area: treinsoort;
-    width: 70px;
+    font-size: 25px;
+    width: 90px;
 }
 
 #bestemming{
     background-color: white;
     grid-area: bestemming;
+    font-size: 40px;
 }
 
 #via{
     background-color: white;
     grid-area: via;
+}
+
+#via2{
+    background-color: white;
+    grid-area: via2;
 }
 
 #treinlengte{
@@ -66,7 +79,8 @@
 }
 
 #volgende{
-    background-color: white;
+    background-color: darkblue;
+    color: white;
     grid-area: volgende;
 }
 
@@ -82,19 +96,67 @@
     width: 100%;
 }
 
-#klok{
+.Length {
+    grid-area: length;
+    position: relative; /* Enables precise positioning of child elements */
+    background-color: white; /* Optional for visibility */
+    display: flex; /* Ensures content inside behaves predictably */
+    align-items: flex-end; /* Push content to the bottom */
+    justify-content: center; /* Center content horizontally */
+    height: 100%; /* Ensures the grid area is fully occupied */
+}
+
+.Length img {
+    max-width: 50%; /* Shrinks image proportionally to fit the container */
+    height: auto; /* Maintains aspect ratio */
+    object-fit: contain; /* Ensures proper scaling */
+}
+
+
+#klok {
     height: 195px;
     width: 195px;
     background-color: rgb(255, 255, 255);
     border-radius: 50%;
     border: 2px solid #000;
-    margin-left: auto;
-    margin-right: auto;
-
     margin: auto;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-    padding: 10px;
+#klok {
+    height: 195px;
+    width: 195px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 50%;
+    border: 2px solid #000;
+    margin: auto;
+    position: relative;
+}
 
+#klok div {
+    position: absolute;
+    bottom: 50%; /* Align with the center vertically */
+    left: 50%; /* Align with the center horizontally */
+    width: 2px; /* Thickness of the clock hand */
+    transform-origin: bottom center; /* Pivot point for rotation */
+    transform: rotate(0deg); /* Initial position */
+    background-color: black; /* Default color for clock hands */
+}
 
+#hour-hand {
+    height: 50px; /* Length of the hour hand */
+    background-color: black;
+}
 
+#minute-hand {
+    height: 70px; /* Length of the minute hand */
+    background-color: gray;
+}
+
+#second-hand {
+    height: 90px; /* Length of the second hand */
+    background-color: red;
 }

@@ -11,27 +11,53 @@
 <body>
     <div id="container">
         <div id="left">
-            <div id="klok"></div>
+            <div id="klok">
+                <div id="hour-hand"></div>
+                <div id="minute-hand"></div>
+                <div id="second-hand"></div>
+            </div>
         </div>
         <div id="middle">
-
-            <p id="datetime"></p>
-
-            <div id="tijd">tttt</div>
-            <div id="treinsoort">treinsoort</div>
-            <div id="bestemming">bestemming</div>
-            <div id="via">via</div>
-            <div id="treinlengte">treinlengte</div>
-            <div id="volgende">volgende</div>
+            <div id="minuten">1<span id="minuuttekst">Minuut</span></div>
+            <div id="treinsoort">Intercity</div>
+            <div id="bestemming">Heerlen</div>
+            <div id="via">via 's-Hertogenbosch, Eindhoven,</div>
+            <div id="via2">Weert, Roermond en Sittard</div>
+            <div id="volgende">Hierna/Next: 08:54 IC Venlo</div>
 
             <div class="logo">
                 <img src="assets/img/ns_logo.png" alt="Logo">
+            </div>
+
+            <div class="Length">
+                <img src="assets/img/Trainlength.png" alt="Length">
             </div>
         </div>
         <div id="right">
 
         </div>
     </div>
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const seconds = now.getSeconds();
+            const minutes = now.getMinutes();
+            const hours = now.getHours();
+    
+            const secondDegree = (seconds / 60) * 360;
+            const minuteDegree = (minutes / 60) * 360 + (seconds / 60) * 6;
+            const hourDegree = (hours / 12) * 360 + (minutes / 60) * 30;
+    
+            document.getElementById("second-hand").style.transform = `rotate(${secondDegree}deg)`;
+            document.getElementById("minute-hand").style.transform = `rotate(${minuteDegree}deg)`;
+            document.getElementById("hour-hand").style.transform = `rotate(${hourDegree}deg)`;
+        }
+    
+        setInterval(updateClock, 1000); // Update clock every second
+        updateClock(); // Initial call to set clock
+    </script>
+    
 </body>
 
 </html>
